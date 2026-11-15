@@ -143,7 +143,8 @@ h1 em, h2 em { font-family: "Playfair Display", Georgia, serif; font-weight: 500
 .article > div:last-child { padding: 24px; }
 .article h3 { min-height: 58px; margin-bottom: 12px; font-size: 20px; line-height: 1.1; }
 .article p { font-size: 13px; line-height: 1.6; }
-.faq { padding: 120px 12vw; display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; background: var(--cream); }
+.faq { padding: 120px 8vw; display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; background: var(--cream); }
+.faq > div:first-child { align-self: start; text-align: left; }
 .faq h2 { margin-top: 25px; }
 .faq-list { border-top: 1px solid var(--line); }
 .faq-row { width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: left; font-size: 14px; font-weight: 600; cursor: pointer; }
@@ -154,7 +155,7 @@ h1 em, h2 em { font-family: "Playfair Display", Georgia, serif; font-weight: 500
 /* Social links stay minimal so the follow-up action feels native to the page. */
 .socials { position: relative; padding: clamp(100px, 9vw, 145px) 8vw; overflow: hidden; background: #0b0d12; color: var(--white); }
 .socials::before { content: ""; position: absolute; inset: 0; background: url('/images/source/pattern-1.png') center / cover no-repeat; opacity: .08; pointer-events: none; }
-.socials-inner { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; }
+.socials-inner { position: relative; z-index: 1; max-width: none; margin: 0; }
 .socials h2 { max-width: 800px; margin: 16px 0 54px; color: var(--white); font-size: clamp(38px, 4.4vw, 70px); line-height: .98; text-align: left; text-transform: uppercase; }
 .socials h2 em { color: var(--blue); }
 .social-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
