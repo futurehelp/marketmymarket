@@ -11,7 +11,7 @@ import { cardMotion } from "@/components/ui/motion-presets";
 
 /** Hero section with the original agency message and local source artwork. */
 export function HeroSection() {
-  const words = ["TRANSPARENCY!", "VALUES!", "RESULTS!"];
+  const words = ["TRANSPARENCY", "VALUES", "RESULTS"];
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {

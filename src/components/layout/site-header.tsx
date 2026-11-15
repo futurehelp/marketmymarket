@@ -35,7 +35,7 @@ export function SiteHeader() {
         ) : <a key={link.label} href={link.href}>{link.label}</a>)}
       </nav>
       <motion.a className="header-cta" href="#contact" {...buttonMotion}>LET&apos;S TALK</motion.a>
-      <motion.button className="menu" type="button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((open) => !open)} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
+      <motion.button className="menu" type="button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((open) => open ? false : true)} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
         <Menu />
       </motion.button>
     </header>

@@ -48,6 +48,12 @@ export type Article = {
   href: string;
 };
 
+export type SocialLink = {
+  label: string;
+  href: string;
+  platform: "facebook" | "instagram" | "youtube" | "linkedin";
+};
+
 export const navigation: NavItem[] = [
   {
     label: "About",
@@ -75,6 +81,13 @@ export const navigation: NavItem[] = [
       { label: "Medical marketing", href: "#verticals" },
     ],
   },
+];
+
+export const socialLinks: SocialLink[] = [
+  { label: "Follow us on Facebook", href: "https://www.facebook.com/marketmymarket/", platform: "facebook" },
+  { label: "Follow us on Instagram", href: "https://www.instagram.com/marketmymarket/", platform: "instagram" },
+  { label: "Subscribe on YouTube", href: "https://www.youtube.com/channel/UCY1u95VDvpdOmiGNuK5mmtA", platform: "youtube" },
+  { label: "Follow us on LinkedIn", href: "https://www.linkedin.com/company/market-my-market/", platform: "linkedin" },
 ];
 
 export const verticals: Vertical[] = [
@@ -132,7 +145,7 @@ export const reviews: Review[] = [
   },
   {
     title: "Market My Market is great",
-    quote: "Market My Market is great and really helped grow my business during our partnership. Joanna is amazing to work with!",
+    quote: "Market My Market is great and really helped grow my business during our partnership. Joanna is amazing to work with.",
     author: "Jonathan Kashani",
     company: "Kash Legal",
     image: "/images/review-jonathan.webp",

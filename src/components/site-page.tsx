@@ -1,6 +1,7 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ContactSection } from "@/components/sections/conversion";
+import { SocialSection } from "@/components/sections/social";
 import {
   ArticlesSection,
   FaqSection,
@@ -30,6 +31,7 @@ export function SitePage() {
       <ArticlesSection />
       <FaqSection />
       <ContactSection />
+      <SocialSection />
       <SiteFooter />
     </main>
   );
