@@ -18,8 +18,7 @@ export function HeroSection() {
         </div>
       </div>
       <div className="hero-content">
-        <div className="eyebrow">DRIVEN BY</div>
-        <h1>TRANSPARENCY<span>!</span></h1>
+        <h1><span>DRIVEN BY</span><strong>TRANSPARENCY!</strong></h1>
         <p>Client experience and proven results are at the core of everything we do at Market My Market.</p>
       </div>
     </section>

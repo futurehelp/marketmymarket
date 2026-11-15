@@ -25,7 +25,7 @@ img { max-width: 100%; }
 .site-header { height: 86px; padding: 0 6.9vw; display: flex; align-items: center; gap: 30px; background: var(--navy); border-bottom: 1px solid rgba(255, 255, 255, .16); position: sticky; top: 0; z-index: 10; }
 .brand { display: block; flex: 0 0 auto; }
 .brand img { width: 255px; height: 30px; display: block; object-fit: contain; object-position: left center; }
-.site-header nav { margin-left: 30px; display: flex; align-items: center; gap: clamp(20px, 2.35vw, 34px); color: var(--white); font-size: 14px; letter-spacing: .08em; }
+.site-header nav { margin-left: 0; display: flex; align-items: center; gap: clamp(20px, 2.35vw, 34px); color: var(--white); font-size: 14px; letter-spacing: .08em; }
 .site-header nav > a, .nav-trigger { text-transform: uppercase; }
 .site-header nav a { position: relative; padding: 10px 0; transition: color .2s ease; }
 .site-header nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 3px; height: 2px; background: var(--blue); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
@@ -49,12 +49,13 @@ h1 em, h2 em { font-family: "Playfair Display", Georgia, serif; font-weight: 500
 .text-link { display: inline-flex; align-items: center; gap: 9px; border-bottom: 1px solid currentColor; padding-bottom: 7px; margin-top: 18px; font-size: 12px; font-weight: 700; }
 
 /* The source hero is a black split composition with collage first and statement second. */
-.hero { min-height: 695px; padding: 0 5.1vw 0 0; display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(340px, .82fr); align-items: stretch; position: relative; overflow: hidden; background: var(--navy); color: var(--white); }
-.hero-bg { position: absolute; inset: 0; background: url('/images/source/pattern-1.png') 100% 50% / auto 145% no-repeat; opacity: .17; pointer-events: none; }
+.hero { min-height: 695px; padding: 0 5.1vw 0 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(340px, .75fr); align-items: stretch; position: relative; overflow: hidden; background: var(--navy); color: var(--white); }
+.hero-bg { position: absolute; inset: 0; background: url('/images/source/pattern-1.png') right center / 75% 100% no-repeat; opacity: .17; pointer-events: none; }
 .hero-content, .hero-side { position: relative; z-index: 1; }
-.hero-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 4vw 80px 5vw; }
-.hero h1 { max-width: 540px; margin: 22px 0 28px; color: var(--white); font-size: clamp(48px, 5vw, 78px); font-weight: 800; letter-spacing: -.08em; line-height: .88; }
-.hero h1 span { color: var(--blue); }
+.hero-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 4vw 80px 2vw; }
+.hero h1 { max-width: 540px; margin: 0 0 28px; color: var(--white); font-size: clamp(48px, 5vw, 78px); font-weight: 800; letter-spacing: -.08em; line-height: .88; }
+.hero h1 span, .hero h1 strong { display: block; font: inherit; letter-spacing: inherit; }
+.hero h1 strong { color: var(--blue); }
 .hero-content > p { max-width: 460px; color: #d8dce3; font-size: 17px; line-height: 1.65; }
 .hero-side { min-height: 695px; }
 .hero-image-wrap { min-height: 695px; height: 100%; position: relative; overflow: hidden; }
