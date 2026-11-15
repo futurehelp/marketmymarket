@@ -20,14 +20,14 @@ export function SiteHeader() {
       <nav className={mobileOpen ? "open" : ""} aria-label="Main navigation" onClick={() => setMobileOpen(false)}>
         {navigation.map((link) => link.children ? (
           <div className="nav-group" key={link.label} onMouseEnter={() => setActiveMenu(link.label)} onMouseLeave={() => setActiveMenu(null)}>
-            <motion.button className="nav-trigger" type="button" aria-expanded={activeMenu === link.label} onClick={() => setActiveMenu((current) => current === link.label ? null : link.label)} whileTap={{ scale: 0.97 }}>
+            <motion.button className="nav-trigger" type="button" aria-expanded={activeMenu === link.label} onClick={() => setActiveMenu((current) => current === link.label ? null : link.label)} whileHover={{ color: "#5b90ff" }} whileTap={{ scale: 0.97 }}>
               {link.label}
               <motion.span animate={{ rotate: activeMenu === link.label ? 180 : 0 }} transition={{ duration: 0.2 }}><ChevronDown size={16} /></motion.span>
             </motion.button>
             <AnimatePresence>
               {activeMenu === link.label && (
                 <motion.div className="nav-dropdown" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.16 }}>
-                  {link.children.map((child) => <a key={child.label} href={child.href}>{child.label}</a>)}
+                  {link.children.map((child) => <motion.a key={child.label} href={child.href} whileHover={{ x: 4, color: "#1851c8" }}>{child.label}</motion.a>)}
                 </motion.div>
               )}
             </AnimatePresence>
