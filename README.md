@@ -1,108 +1,131 @@
-# Market My Market — Homepage Migration
+# Market My Market
 
-> A Next.js/Vercel migration of the Market My Market homepage, preserving the live site’s content, visual system, imagery, navigation, embeds, and interactions while moving the delivery layer away from WordPress.
+Native Next.js modernization of the Market My Market homepage. The build preserves the original agency content, palette, typography direction, and downloaded source imagery while adding responsive layout, accessible controls, and restrained Framer Motion interactions.
 
-Live site: [marketmymarket.vercel.app](https://marketmymarket.vercel.app/)
+Live deployment: [marketmymarket.vercel.app](https://marketmymarket.vercel.app/)
 
 Source reference: [marketmymarket.com](https://www.marketmymarket.com/)
 
-## What this project preserves
+## Stack
 
-Market My Market positions itself as a transparent, results-driven digital marketing agency serving businesses across competitive verticals. The homepage communicates that through:
+- Next.js 16 App Router with React 19
+- Strict TypeScript
+- Framer Motion for navigation, cards, CTAs, FAQ, and carousel controls
+- Lucide React for interface icons
+- Local source imagery stored in `public/images`
+- GitHub and Vercel deployment
 
-- Transparency, values, people, and results as the core promise
-- Legal, dental, and medical marketing verticals
-- Digital marketing, reporting, and development competencies
-- Client testimonials and social proof
-- Core values and leadership perspective
-- Featured media, client logos, podcast content, and editorial resources
-- A direct “Let’s Talk” conversion path
+## Project structure
 
-## Homepage architecture
+```text
+src/
+├── app/
+│   ├── globals.css       # Design system and responsive layout
+│   ├── icon.png          # Favicon
+│   ├── layout.tsx        # Metadata and motion provider
+│   └── page.tsx          # Route entry point
+├── components/
+│   ├── layout/            # Utility bar, header, and footer
+│   ├── sections/          # Primary, experience, and conversion sections
+│   ├── ui/                # Arrow link and shared motion presets
+│   ├── motion.tsx         # Reduced motion provider
+│   └── site-page.tsx      # Shallow page composition
+└── lib/
+    └── site-content.ts    # Typed copy, links, cards, and asset paths
+```
+
+## Architecture
 
 ```mermaid
 flowchart TD
-    A[Homepage] --> B[Hero: Driven By Transparency, Values, People, Results]
-    B --> C[Agency positioning]
-    C --> D[Who We Work With]
-    D --> D1[Legal Marketing]
-    D --> D2[Dental Marketing]
-    D --> D3[Medical Marketing]
-    D --> E[Core Competencies]
-    E --> E1[Digital Marketing]
-    E --> E2[Reporting]
-    E --> E3[Development]
-    E --> F[Client Reviews]
-    F --> G[Client Logos + Featured In]
-    G --> H[Core Values]
-    H --> I[Thought Leadership]
-    I --> J[Legal Mastermind Podcast]
-    J --> K[Blogs and Resources]
-    K --> L[Let's Talk CTA]
+    Route[src/app/page.tsx] --> Page[src/components/site-page.tsx]
+    Page --> Layout[components/layout]
+    Page --> Sections[components/sections]
+    Page --> UI[components/ui]
+    Page --> Content[src/lib/site-content.ts]
+    Layout --> Header[SiteHeader]
+    Layout --> Footer[SiteFooter]
+    Layout --> Utility[TopLine]
+    Sections --> Primary[Hero, intro, verticals, competencies]
+    Sections --> Experience[Testimonials, values, podcast, resources, FAQ]
+    Sections --> Conversion[Contact CTA]
+    UI --> Motion[Shared Framer Motion presets]
+    Content --> Primary
+    Content --> Experience
+    Motion --> Header
+    Motion --> Sections
 ```
 
-## Service map
+## Page flow
 
 ```mermaid
-mindmap
-  root((Market My Market))
-    Legal marketing
-      SEO strategy
-      Lead generation
-      Content and visibility
-    Dental marketing
-      Patient acquisition
-      Sustainable growth
-      Local search
-    Medical marketing
-      Practice growth
-      Qualified traffic
-      Booking conversion
-    Digital marketing
-      SEO
-      Content creation
-      Local optimization
-    Reporting
-      Transparent data
-      Campaign updates
-      Performance tracking
-    Development
-      Strategic guidance
-      Industry networking
-      Growth opportunities
+flowchart LR
+    A[Utility bar] --> B[Sticky navigation]
+    B --> C[Driven by what matters]
+    C --> D[Agency positioning]
+    D --> E[Industry verticals]
+    E --> F[Core competencies]
+    F --> G[Client proof]
+    G --> H[Core values]
+    H --> I[Legal Mastermind podcast]
+    I --> J[Resources and articles]
+    J --> K[FAQ]
+    K --> L[Let's talk CTA]
+    L --> M[Footer]
 ```
 
-## Delivery architecture
-
-The public homepage is implemented as native Next.js sections. Original visual assets are stored in `public/images`, and the homepage includes responsive layout, animated hover states, and an interactive FAQ accordion.
+## Interaction map
 
 ```mermaid
-sequenceDiagram
-    participant V as Visitor
-    participant N as Next.js App
-    participant C as Browser Cache
-
-    V->>N: Open marketmymarket.vercel.app
-    N-->>V: Render native Next.js homepage
-    V->>C: Load local images and brand assets
-    V->>N: Interact with FAQ and CTA sections
-    N-->>V: Update client-side UI state
+flowchart TD
+    Visitor[Visitor] --> Nav[Open navigation]
+    Visitor --> Cards[Hover industry or article card]
+    Visitor --> Reviews[Change testimonial]
+    Visitor --> FAQ[Expand FAQ row]
+    Visitor --> CTA[Use CTA]
+    Nav --> Menu[Mobile menu state]
+    Cards --> Lift[Spring lift and image zoom]
+    Reviews --> ReviewState[Local review index]
+    FAQ --> FAQState[Local open row state]
+    CTA --> Contact[mailto contact path]
+    Preference[Reduced motion preference] --> Config[MotionConfig]
+    Config --> Lift
+    Config --> Menu
+    Config --> ReviewState
+    Config --> FAQState
 ```
 
-## Asset inventory
+## Asset map
 
-The local asset archive includes the extracted homepage imagery and brand materials:
+```mermaid
+erDiagram
+    PAGE ||--o{ VERTICAL : presents
+    PAGE ||--o{ COMPETENCY : explains
+    PAGE ||--o{ REVIEW : proves
+    PAGE ||--o{ VALUE : guides
+    PAGE ||--o{ ARTICLE : publishes
+    VERTICAL }o--|| ASSET : uses
+    COMPETENCY }o--|| ASSET : uses
+    REVIEW }o--|| ASSET : uses
+    VALUE }o--|| ASSET : uses
+    ARTICLE }o--|| ASSET : uses
+    ASSET {
+        string path
+        string altText
+    }
+```
 
-- Site and mobile logos
-- Hero and agency imagery
-- Legal, dental, and medical marketing imagery
-- Core value icons and background patterns
-- Client logos and featured-in marks
-- Testimonial portraits
-- Podcast and editorial graphics
-- Favicon assets
+The downloaded archive includes the original hero, pattern, vertical, competency, testimonial, value, podcast, logo, and editorial assets. They are referenced locally so the homepage does not depend on a remote source page.
 
-Assets live in [`public/images`](./public/images).
+## Scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create the optimized production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint checks |
+| `npm run typecheck` | Run strict TypeScript checks |
 
 ## Local development
 
@@ -113,26 +136,22 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Production build
+## Quality checks
 
 ```bash
+npm run lint
+npm run typecheck
 npm run build
-npm run start
 ```
 
-## Deployment
-
-The project is connected to GitHub and Vercel:
+## Deployment flow
 
 ```mermaid
-flowchart LR
-    A[Local Next.js project] --> B[GitHub main branch]
-    B --> C[Vercel build]
-    C --> D[Production deployment]
-    D --> E[marketmymarket.vercel.app]
+gitGraph
+    commit id: "Native Next.js foundation"
+    commit id: "Download original Market My Market assets"
+    commit id: "Split typed sections and motion UI"
+    commit id: "Verify and deploy with Vercel"
 ```
 
-## Notes for the next migration phase
-
-The current implementation prioritizes visual parity and fast handoff. The next step toward a fully independent Next.js build would be to replace the source-page proxy with native components while keeping the same section order, content, asset references, and interaction behavior.
-
+The homepage is native Next.js. It does not embed the original page or proxy the original HTML.
