@@ -78,6 +78,7 @@ h1 em, h2 em { font-family: "Playfair Display", Georgia, serif; font-weight: 500
 .intro .text-link { margin-top: 44px; }
 .section-heading h2, .competencies h2, .values h2, .podcast h2, .faq h2, .contact h2, .articles h2 { margin: 0 0 25px; font-size: clamp(46px, 5vw, 78px); }
 .section-heading h2, .competencies h2, .articles h2 { line-height: 1.06; }
+.verticals .section-heading h2, .competencies > h2, .articles .section-heading h2 { margin-top: 40px; }
 .section-heading > p, .vertical p, .competencies p, .value-copy p, .podcast p, .contact p, .article p { max-width: 520px; color: var(--muted); font-size: 15px; line-height: 1.75; }
 .verticals { padding: clamp(20px, 2vw, 32px) 5.1vw 145px; background: var(--navy); color: var(--white); }
 .section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 10vw; align-items: end; }
