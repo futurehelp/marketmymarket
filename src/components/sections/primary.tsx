@@ -39,10 +39,14 @@ export function HeroSection() {
 export function IntroSection() {
   return (
     <section className="intro" id="about">
-      <div className="eyebrow">AN AGENCY THAT CONSTANTLY CHANGES</div>
-      <div>
-        <h2>Marketing that keeps pace with <em>your market.</em></h2>
-        <p>The digital world is always changing. Your strategy should too. We guide hundreds of businesses through every stage of growth with tailored solutions, trusted communication, and a clear view of what is working.</p>
+      <div className="intro-statement">
+        <h2>
+          The digital landscape moves fast. Your marketing should <span>move with it</span>.
+        </h2>
+        <div className="intro-copy">
+          <p>Too many marketing companies keep businesses guessing, making it difficult to see what is working, where momentum is building, and which opportunities deserve attention next. Without that clarity, campaigns drift, lead quality suffers, and it becomes harder to adapt to search, social, AI, and the technologies changing how customers choose.</p>
+          <p>When you partner with Market My Market, specialized experts turn that complexity into a focused growth strategy built for your market. We pair transparent reporting, trusted communication, and reliable execution with the technical expertise to keep your brand visible, relevant, and ready for what is next. Your experience, your leads, and your results stay at the center of the work.</p>
+        </div>
         <ArrowLink href="#verticals">See how we work</ArrowLink>
       </div>
     </section>
