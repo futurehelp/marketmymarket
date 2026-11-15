@@ -9,6 +9,7 @@ export type NavItem = {
   label: string;
   href: string;
   external?: boolean;
+  children?: NavItem[];
 };
 
 export type Vertical = {
@@ -47,10 +48,32 @@ export type Article = {
 };
 
 export const navigation: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Results", href: "#results" },
+  {
+    label: "About",
+    href: "#about",
+    children: [
+      { label: "Our teams", href: "#about" },
+      { label: "Careers", href: "#contact" },
+    ],
+  },
+  {
+    label: "Results",
+    href: "#results",
+    children: [
+      { label: "Case studies", href: "#results" },
+      { label: "Client stories", href: "#results" },
+    ],
+  },
   { label: "Resources", href: "#resources" },
-  { label: "Who we work with", href: "#verticals" },
+  {
+    label: "Who we work with",
+    href: "#verticals",
+    children: [
+      { label: "Legal marketing", href: "#verticals" },
+      { label: "Dental marketing", href: "#verticals" },
+      { label: "Medical marketing", href: "#verticals" },
+    ],
+  },
 ];
 
 export const verticals: Vertical[] = [

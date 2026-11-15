@@ -10,7 +10,7 @@ Source reference: [marketmymarket.com](https://www.marketmymarket.com/)
 
 - Next.js 16 App Router with React 19
 - Strict TypeScript
-- Framer Motion for navigation, cards, CTAs, FAQ, and carousel controls
+- Framer Motion for navigation dropdowns, cards, CTAs, FAQ, and carousel controls
 - Lucide React for interface icons
 - Local source imagery stored in `public/images`
 - GitHub and Vercel deployment
@@ -84,6 +84,7 @@ flowchart TD
     Visitor --> FAQ[Expand FAQ row]
     Visitor --> CTA[Use CTA]
     Nav --> Menu[Mobile menu state]
+    Nav --> Dropdown[Animated desktop dropdown]
     Cards --> Lift[Spring lift and image zoom]
     Reviews --> ReviewState[Local review index]
     FAQ --> FAQState[Local open row state]
@@ -155,3 +156,79 @@ gitGraph
 ```
 
 The homepage is native Next.js. It does not embed the original page or proxy the original HTML.
+
+## Engineering overview
+
+The design is intentionally split between stable server composition and focused client islands. Only components that need state or motion opt into the client boundary.
+
+```mermaid
+flowchart TD
+    Browser[Browser] --> Route[Next.js App Router]
+    Route --> Metadata[Static metadata and Open Graph]
+    Route --> Composition[Server page composition]
+    Composition --> Layout[Header, utility bar, footer]
+    Composition --> ContentSections[Server-safe content sections]
+    Composition --> ClientIslands[Client interaction islands]
+    ClientIslands --> NavState[Dropdown and mobile menu state]
+    ClientIslands --> ReviewState[Testimonial index state]
+    ClientIslands --> FAQState[FAQ open-row state]
+    ClientIslands --> MotionConfig[Framer Motion reduced-motion config]
+    ContentSections --> TypedContent[Typed content models]
+    ClientIslands --> TypedContent
+    TypedContent --> LocalAssets[Local public image assets]
+```
+
+## Interaction lifecycle
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Header
+    participant Motion
+    participant Section
+    participant Destination
+
+    User->>Header: Hover or focus a nav group
+    Header->>Motion: Animate dropdown entrance
+    Motion-->>User: Reveal grouped navigation
+    User->>Section: Select CTA or card
+    Section->>Motion: Apply scale, lift, or image transition
+    Section->>Destination: Navigate to local anchor or mailto action
+    User->>Section: Open FAQ or change testimonial
+    Section-->>User: Update local client state without navigation
+```
+
+## Delivery gates
+
+```mermaid
+flowchart LR
+    Edit[Edit typed source] --> Lint[npm run lint]
+    Lint --> Typecheck[npm run typecheck]
+    Typecheck --> Build[npm run build]
+    Build --> Audit[Audit native source for embedded page and proxy remnants]
+    Audit --> Commit[GitHub main]
+    Commit --> Deploy[Vercel production]
+    Deploy --> Smoke[Browser smoke check]
+```
+
+## Architecture decisions
+
+| Decision | Rationale |
+| --- | --- |
+| Native App Router | Removes the legacy WordPress delivery layer and keeps the page deployable as a real Next.js application |
+| Typed content models | Separates editorial updates from layout code and makes repeated cards predictable |
+| Client islands | Keeps stateful interactions focused instead of turning the whole page into one client component |
+| Framer Motion | Adds tactile feedback to navigation and CTAs without adding a heavy 3D runtime |
+| Local assets | Keeps visual parity stable and removes dependence on remote source markup |
+| No WebGPU dependency | The page benefits from compositing-friendly transforms, not a 3D scene or shader pipeline |
+
+## Handoff checklist
+
+- Native `src/app` App Router structure
+- Organized `layout`, `sections`, `ui`, and `lib` directories
+- Local source imagery with descriptive alt text
+- Responsive desktop and mobile navigation
+- Motion-enabled CTA, dropdown, card, FAQ, and testimonial interactions
+- Metadata and Open Graph configuration
+- Mermaid documentation for architecture and delivery
+- Lint, strict TypeScript, and production build scripts

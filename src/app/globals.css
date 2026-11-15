@@ -29,6 +29,12 @@ img { max-width: 100%; }
 .site-header nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 3px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
 .site-header nav a:hover { color: var(--navy); }
 .site-header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-group { position: relative; }
+.nav-trigger { display: inline-flex; align-items: center; gap: 7px; padding: 10px 0; border: 0; background: transparent; color: inherit; font-size: inherit; cursor: pointer; }
+.nav-trigger:hover { color: var(--navy); }
+.nav-dropdown { position: absolute; top: calc(100% + 8px); left: -18px; min-width: 190px; padding: 8px 0; background: var(--white); border-top: 2px solid var(--gold); box-shadow: 0 18px 35px rgba(18, 34, 56, .14); }
+.nav-dropdown a { display: block; padding: 12px 18px; white-space: nowrap; }
+.nav-dropdown a::after { display: none; }
 .header-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--gold); color: var(--navy); padding: 14px 18px; border: 0; font-size: 11px; font-weight: 700; cursor: pointer; }
 .header-cta { flex: 0 0 auto; }
 .menu { display: none; margin-left: auto; padding: 8px; background: none; border: 0; color: var(--navy); cursor: pointer; }
@@ -154,6 +160,10 @@ footer a:hover { color: var(--navy); transform: translateX(3px); }
   .menu { display: block; }
   .site-header nav.open { position: absolute; top: 76px; left: 0; right: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 7vw 18px; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 15px 28px rgba(18, 34, 56, .12); }
   .site-header nav.open a { padding: 14px 0; border-bottom: 1px solid #edf0f1; }
+  .site-header nav.open .nav-group { border-bottom: 1px solid #edf0f1; }
+  .site-header nav.open .nav-trigger { width: 100%; justify-content: space-between; padding: 14px 0; text-align: left; }
+  .site-header nav.open .nav-dropdown { position: static; min-width: 0; padding: 0 0 6px 16px; border-top: 0; box-shadow: none; }
+  .site-header nav.open .nav-dropdown a { border: 0; padding: 9px 0; }
   .hero { display: block; min-height: 0; padding: 75px 7vw 60px; }
   .hero-side { padding-top: 60px; }
   .hero-image-wrap { min-height: 300px; }
