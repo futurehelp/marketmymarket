@@ -1,6 +1,5 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { TopLine } from "@/components/layout/top-line";
 import { ContactSection } from "@/components/sections/conversion";
 import {
   ArticlesSection,
@@ -20,7 +19,6 @@ import {
 export function SitePage() {
   return (
     <main>
-      <TopLine />
       <SiteHeader />
       <HeroSection />
       <IntroSection />

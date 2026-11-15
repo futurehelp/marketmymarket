@@ -5,24 +5,22 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { verticals, competencies } from "@/lib/site-content";
 import { ArrowLink } from "@/components/ui/arrow-link";
-import { buttonMotion, cardMotion } from "@/components/ui/motion-presets";
+import { cardMotion } from "@/components/ui/motion-presets";
 
 /** Hero section with the original agency message and local source artwork. */
 export function HeroSection() {
   return (
     <section className="hero" id="top">
       <div className="hero-bg" />
-      <div className="hero-content">
-        <div className="eyebrow">THE DIGITAL LANDSCAPE NEVER STOPS MOVING</div>
-        <h1>Driven by<br /><em>what matters.</em></h1>
-        <p>Transparency. Values. People. Results. Client experience and proven growth are at the core of everything we do.</p>
-        <motion.a className="button" href="#contact" {...buttonMotion}>Start a conversation <ArrowRight size={16} /></motion.a>
-      </div>
       <div className="hero-side">
         <div className="hero-image-wrap">
-          <Image src="/images/hero-original.webp" fill sizes="(max-width: 800px) 86vw, 42vw" alt="Market My Market team collaborating" priority />
+          <Image src="/images/hero-original.webp" fill sizes="(max-width: 800px) 100vw, 62vw" alt="Market My Market campaign collage" priority />
         </div>
-        <span>Strategy built for the next move ↗</span>
+      </div>
+      <div className="hero-content">
+        <div className="eyebrow">DRIVEN BY</div>
+        <h1>TRANSPARENCY<span>!</span></h1>
+        <p>Client experience and proven results are at the core of everything we do at Market My Market.</p>
       </div>
     </section>
   );

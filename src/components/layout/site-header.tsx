@@ -15,7 +15,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Market My Market home">
-        <Image src="/images/site-logo.png" width={281} height={144} alt="Market My Market" />
+        <Image src="/images/m-logo1.png" width={510} height={60} alt="Market My Market" priority />
       </a>
       <nav className={mobileOpen ? "open" : ""} aria-label="Main navigation" onClick={() => setMobileOpen(false)}>
         {navigation.map((link) => link.children ? (
@@ -34,7 +34,7 @@ export function SiteHeader() {
           </div>
         ) : <a key={link.label} href={link.href}>{link.label}</a>)}
       </nav>
-      <motion.a className="header-cta" href="#contact" {...buttonMotion}>LET&apos;S TALK <ArrowRight size={15} /></motion.a>
+      <motion.a className="header-cta" href="#contact" {...buttonMotion}>LET&apos;S TALK <ArrowRight size={16} /></motion.a>
       <motion.button className="menu" type="button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((open) => !open)} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
         <Menu />
       </motion.button>

@@ -79,21 +79,21 @@ export const navigation: NavItem[] = [
 export const verticals: Vertical[] = [
   {
     title: "Legal marketing",
-    description: "We connect law firms with high-value leads through strategy, content, and search.",
-    image: "/images/legal-original.png",
-    href: "#contact",
+    description: "At Market My Market, we have over 14 years of experience helping law firms grow. We understand that standing out in legal marketing requires more than just visibility. We will connect you with high-value leads that turn into cases through proven strategies and insight.",
+    image: "/images/source/legal-icon.png",
+    href: "/legal-marketing/",
   },
   {
     title: "Dental marketing",
-    description: "We help practices attract patients, lower costs, and build lasting growth.",
-    image: "/images/dental-original.png",
-    href: "#contact",
+    description: "Success in dentistry requires more than great care. We will help your practice grow with SEO strategies that attract patients, lower costs, and ensure long-term success.",
+    image: "/images/source/dental-icon.png",
+    href: "/dental-marketing/",
   },
   {
     title: "Medical marketing",
-    description: "We turn visibility into qualified traffic, bookings, and patient relationships.",
-    image: "/images/medical-original.png",
-    href: "#contact",
+    description: "Whether you are a spine doctor, medical spa, veterinarian, or another patient-focused provider, our medical marketing strategies drive traffic and turn visits into bookings.",
+    image: "/images/MMM-Medical_1.png",
+    href: "/medical-marketing/",
   },
 ];
 
