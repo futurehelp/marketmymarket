@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import { navigation } from "@/lib/site-content";
 import { buttonMotion } from "@/components/ui/motion-presets";
 
@@ -34,7 +34,7 @@ export function SiteHeader() {
           </div>
         ) : <a key={link.label} href={link.href}>{link.label}</a>)}
       </nav>
-      <motion.a className="header-cta" href="#contact" {...buttonMotion}>LET&apos;S TALK <ArrowRight size={16} /></motion.a>
+      <motion.a className="header-cta" href="#contact" {...buttonMotion}>LET&apos;S TALK</motion.a>
       <motion.button className="menu" type="button" aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen} onClick={() => setMobileOpen((open) => !open)} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.92 }}>
         <Menu />
       </motion.button>
