@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@500;600&display=swap');
+@font-face { font-family: "MMM Avenir"; src: url('/images/source/AvenirLTProRoman.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "MMM Avenir"; src: url('/images/source/AvenirLTProMedium.ttf') format('truetype'); font-weight: 500 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "MMM Avenir"; src: url('/images/source/AvenirLTProHeavy.ttf') format('truetype'); font-weight: 700 900; font-style: normal; font-display: swap; }
 
 :root {
   --navy: #000000;
@@ -15,7 +18,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--white); color: var(--ink); font-family: "DM Sans", Arial, sans-serif; }
+body { margin: 0; background: var(--white); color: var(--ink); font-family: "MMM Avenir", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 img { max-width: 100%; }
@@ -52,8 +55,8 @@ h1 em, h2 em { font-family: "Playfair Display", Georgia, serif; font-weight: 500
 .hero { min-height: 695px; padding: 0 5.1vw 0 0; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(340px, .75fr); align-items: stretch; position: relative; overflow: hidden; background: var(--navy); color: var(--white); }
 .hero-bg { position: absolute; inset: 0; background: url('/images/source/pattern-1.png') right center / 75% 100% no-repeat; opacity: .17; pointer-events: none; }
 .hero-content, .hero-side { position: relative; z-index: 1; }
-.hero-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 4vw 80px 2vw; }
-.hero h1 { max-width: 540px; margin: 0 0 28px; color: var(--white); font-size: clamp(48px, 5vw, 78px); font-weight: 800; letter-spacing: -.08em; line-height: .88; }
+.hero-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 4vw 80px 3vw; }
+.hero h1 { max-width: 540px; margin: 0 0 52px; color: var(--white); font-size: clamp(48px, 4.2vw, 66px); font-weight: 800; letter-spacing: -.08em; line-height: .88; }
 .hero h1 span, .hero h1 strong { display: block; font: inherit; letter-spacing: inherit; }
 .hero h1 strong { color: var(--blue); }
 .hero-content > p { max-width: 460px; color: #d8dce3; font-size: 17px; line-height: 1.65; }
