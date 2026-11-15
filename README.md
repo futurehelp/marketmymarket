@@ -74,23 +74,19 @@ mindmap
 
 ## Delivery architecture
 
-The public homepage is delivered from a Next.js shell. The `/original-home` route fetches the live reference page server-side and returns it through the project’s own origin, avoiding the source site’s frame restriction while preserving the rendered page experience. Original visual assets are also stored in `public/images` for the migration archive and future independent component work.
+The public homepage is implemented as native Next.js sections. Original visual assets are stored in `public/images`, and the homepage includes responsive layout, animated hover states, and an interactive FAQ accordion.
 
 ```mermaid
 sequenceDiagram
     participant V as Visitor
     participant N as Next.js App
-    participant P as /original-home Route
-    participant W as Market My Market Source
     participant C as Browser Cache
 
     V->>N: Open marketmymarket.vercel.app
-    N-->>V: Render same-origin homepage shell
-    V->>P: Load homepage content
-    P->>W: Fetch current homepage HTML
-    W-->>P: Return HTML, CSS links, assets, embeds
-    P-->>V: Serve source page through Next.js origin
-    V->>C: Load images, styles, scripts, embeds
+    N-->>V: Render native Next.js homepage
+    V->>C: Load local images and brand assets
+    V->>N: Interact with FAQ and CTA sections
+    N-->>V: Update client-side UI state
 ```
 
 ## Asset inventory
