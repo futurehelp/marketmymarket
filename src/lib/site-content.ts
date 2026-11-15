@@ -16,6 +16,7 @@ export type Vertical = {
   title: string;
   description: string;
   image: string;
+  backgroundImage: string;
   href: string;
 };
 
@@ -81,18 +82,21 @@ export const verticals: Vertical[] = [
     title: "Legal marketing",
     description: "At Market My Market, we have over 14 years of experience helping law firms grow. We understand that standing out in legal marketing requires more than just visibility. We will connect you with high-value leads that turn into cases through proven strategies and insight.",
     image: "/images/source/legal-icon.png",
+    backgroundImage: "/images/source/legal-bg.jpg",
     href: "/legal-marketing/",
   },
   {
     title: "Dental marketing",
     description: "Success in dentistry requires more than great care. We will help your practice grow with SEO strategies that attract patients, lower costs, and ensure long-term success.",
     image: "/images/source/dental-icon.png",
+    backgroundImage: "/images/source/dental-bg.jpg",
     href: "/dental-marketing/",
   },
   {
     title: "Medical marketing",
     description: "Whether you are a spine doctor, medical spa, veterinarian, or another patient-focused provider, our medical marketing strategies drive traffic and turn visits into bookings.",
     image: "/images/MMM-Medical_1.png",
+    backgroundImage: "/images/source/medical-bg.avif",
     href: "/medical-marketing/",
   },
 ];

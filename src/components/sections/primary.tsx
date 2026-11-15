@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { verticals, competencies } from "@/lib/site-content";
 import { ArrowLink } from "@/components/ui/arrow-link";
@@ -9,6 +11,14 @@ import { cardMotion } from "@/components/ui/motion-presets";
 
 /** Hero section with the original agency message and local source artwork. */
 export function HeroSection() {
+  const words = ["TRANSPARENCY!", "VALUES!", "RESULTS!"];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => setWordIndex((current) => (current + 1) % words.length), 3600);
+    return () => window.clearInterval(interval);
+  }, [words.length]);
+
   return (
     <section className="hero" id="top">
       <div className="hero-bg" />
@@ -18,7 +28,7 @@ export function HeroSection() {
         </div>
       </div>
       <div className="hero-content">
-        <h1><span>DRIVEN BY</span><strong>TRANSPARENCY!</strong></h1>
+        <h1><span>DRIVEN BY</span><AnimatePresence mode="wait"><motion.strong key={words[wordIndex]} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -24 }} transition={{ duration: .45, ease: "easeOut" }}>{words[wordIndex]}</motion.strong></AnimatePresence></h1>
         <p>Client experience and proven results are at the core of everything we do at Market My Market.</p>
       </div>
     </section>
@@ -51,13 +61,16 @@ export function VerticalsSection() {
         <p>Different industries have different stakes. Our specialists know the difference.</p>
       </div>
       <div className="vertical-grid">
-        {verticals.map((vertical, index) => (
+        {verticals.map((vertical) => (
           <motion.a className="vertical" href={vertical.href} key={vertical.title} {...cardMotion}>
+            <div className="vertical-media" aria-hidden="true">
+              <Image className="vertical-bg" src={vertical.backgroundImage} fill sizes="(max-width: 800px) 86vw, 28vw" alt="" />
+              <div className="vertical-scrim" />
+            </div>
             <div className="vertical-image">
               <Image src={vertical.image} fill sizes="(max-width: 800px) 86vw, 28vw" alt={`${vertical.title} marketing`} />
             </div>
             <div className="vertical-body">
-              <span>0{index + 1} / 03</span>
               <h3>{vertical.title}</h3>
               <p>{vertical.description}</p>
               <span className="vertical-link">LEARN MORE <ArrowRight size={14} /></span>
